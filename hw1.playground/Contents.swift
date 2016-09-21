@@ -22,7 +22,8 @@ class Words {
 //: ### variables the same type? If not, why?
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
+//: They are the same type because if the local variable is nil then the instance variables are nil (with a thrown exception), and if the local variable
+//: is a String then so is instance
 
 
 //: ## Q2: Variable Types and Function Types
@@ -41,12 +42,11 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
-
+//: The compiler dislikes the for loop because numElements could be 0 and the other problem is because there was no guarantee that a Bool would be returned at the end of the function, thus by adding a return true if the for loop fails will guarantee either a true/false are returned;.
 
 //: ## Q3: More Functions and Object Initialization
     class func isAnagram() -> Bool {
-        var countLetters : [Character : Int] //Line X
+        var countLetters : [Character : Int] = [Character : Int]()//Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
         
