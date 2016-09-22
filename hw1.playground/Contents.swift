@@ -23,11 +23,11 @@ class Words {
 
 
 //: They are the same type because if the local variable is nil then the instance variables are nil (with a thrown exception), and if the local variable
-//: is a String then so is instance
+//: is a String then so is the instance variable
 
 
 //: ## Q2: Variable Types and Function Types
-    func arePalindromes(_ words: [String]) -> Bool {
+    class func arePalindromes(_ words: [String]) -> Bool {
         let reversedWords = words.map() {String($0.characters.reversed())}
         let numElements = words.count
         
@@ -36,16 +36,17 @@ class Words {
                 return false
             }
         }
+        return true
     }
 //: ### Why does the compiler dislike the **for loop**? Fix it.
 //: ### What else is wrong with this function? You may have to refer to (but **not**
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: The compiler dislikes the for loop because numElements could be 0 and the other problem is because there was no guarantee that a Bool would be returned at the end of the function, thus by adding a return true if the for loop fails will guarantee either a true/false are returned;.
+//: One problem with the for loop is numElements could be 0 (seems like for loop is working correctly anyways) and the other problem is because there was no guarantee that a Bool would be returned at the end of the function, thus by adding a return true if the for loop fails will guarantee either a true/false are returned;.
 
 //: ## Q3: More Functions and Object Initialization
-    class func isAnagram() -> Bool {
+    func isAnagram() -> Bool {
         var countLetters : [Character : Int] = [Character : Int]()//Line X
         var lenA = self.wordA.characters.count
         var lenB = self.wordB.characters.count
@@ -81,7 +82,7 @@ class Words {
             }
         }
         
-        return nil
+        return true
     }
 //: ### What is the problem with declaring **countLetters** as we do in **Line X**,
 //: ### and then using it in **Line Y**? Fix it (by only changing **Line X**).
@@ -89,8 +90,7 @@ class Words {
 //: ### change) the code at the very bottom. Debug the function.
 
 
-//: [EXPLAIN YOUR ANSWER HERE]
-    
+//: The problem with declaring it as it is in line X is that it does not get initialized properly before adding or modifying items in the dictionary by Line Y. Also, the other problem with the function is that this is a class function, so the use of 'self' should not be working at all; the return nil at the end causes errors unless the method return type is changed from Bool to Bool?, so it was changed to return true. Thus, the function has been modified to an instance method accordingly.
     
 }
 
